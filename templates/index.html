@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Générateur une prédiction </title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 40px; }
+        h1 { color: #333; }
+        label { display: block; margin-top: 20px; }
+        select, input[type="datetime-local"] { padding: 10px; width: 300px; font-size: 16px; }
+        button { margin-top: 30px; padding: 12px 25px; font-size: 16px; background-color: #007BFF; color: white; border: none; border-radius: 6px; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <h1>Générateur de prédictions de mouvements</h1>
+    <form method="POST" action="/predict_plan">
+        <label for="room_type">Type de pièce :</label>
+        <select name="room_type" required>
+            {% for rtype in room_types %}
+                <option value="{{ rtype }}">{{ rtype.capitalize() }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="start_time">Heure de départ :</label>
+        <input type="datetime-local" name="start_time" required>
+
+        <button type="submit">Générer la prédiction</button>
+    </form>
+</body>
+</html>

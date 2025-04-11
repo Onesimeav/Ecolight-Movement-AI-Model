@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Résultat de la prédiction</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 30px; }
+        h1 { color: #333; }
+        table { border-collapse: collapse; width: 100%; margin-top: 30px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        th { background-color: #f2f2f2; }
+        .on { background-color: #d4fcd4; }
+        .off { background-color: #fce1e1; }
+        .controls { margin-top: 30px; }
+        a.button { padding: 10px 20px; background: #007BFF; color: white; text-decoration: none; border-radius: 6px; margin-right: 10px; }
+        a.button:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <h1>Prédiction des mouvements pour les chambres de type{{ room_type }}</h1>
+
+    <div class="controls">
+        <a class="button" href="/">⬅ Retour</a>
+        <a class="button" href="/static/plan.csv" download="plan.csv">⬇ Télécharger CSV</a>
+    </div>
+
+    <table>
+        <tr>
+            <th>Heure</th>
+            <th>Pièce</th>
+            <th>Mouvements</th>
+            <th>Précision</th>
+        </tr>
+        {% for row in results %}
+        <tr class="{{ 'on' if row.predicted_on else 'off' }}">
+            <td>{{ row.time }}</td>
+            <td>{{ row.location }}</td>
+            <td>{{ "Mouvement" if row.predicted_on else "Pas de mouvement" }}</td>
+            <td>{{ row.confidence }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
