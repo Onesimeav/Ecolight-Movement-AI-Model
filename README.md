@@ -1,18 +1,14 @@
 # 🌱 Ecolight  
 
 Ecolight is a machine learning model that predicts people’s movement across different areas of a house based on the time of day.  
-It can be used to create optimized, waste-free lighting plans that reduce energy consumption.  
-
----
+It can be used to create optimized, waste-free lighting plans that reduce energy consumption.
 
 ## ✨ Motivation  
 
 In regions where power outages are frequent, many households rely on solar energy as a backup. With limited resources, energy savings become crucial.  
 
 Ecolight was born from this challenge:  
-I wanted to help households understand and predict how they use their living spaces, so they can design smarter, cost-effective lighting strategies. By learning patterns of daily movement, Ecolight enables energy planning that is both efficient and sustainable.  
-
----
+I wanted to help households understand and predict how they use their living spaces, so they can design smarter, cost-effective lighting strategies. By learning patterns of daily movement, Ecolight enables energy planning that is both efficient and sustainable.
 
 ## 🚀 Quick Start  
 
@@ -103,8 +99,6 @@ uv run analyze_patterns.py
 ```
 
 Outputs graphs inside the `figure_updated/` folder.
-
----
 
 ## 🤝 Contributing
 
