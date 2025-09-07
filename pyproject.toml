@@ -1,0 +1,14 @@
+[project]
+name = "ecolight-movement-ai-model"
+version = "0.1.0"
+description = "Machine learning model that predicts people’s movement across different areas of a house based on the time of day"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "flask>=3.1.2",
+    "joblib>=1.5.2",
+    "pandas>=2.3.2",
+    "scikit-learn>=1.7.1",
+    "seaborn>=0.13.2",
+    "tensorflow>=2.20.0",
+]

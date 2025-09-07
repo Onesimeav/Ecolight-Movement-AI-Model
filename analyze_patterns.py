@@ -29,14 +29,14 @@ df_motion["etat_bin"] = df_motion["etat_bin"].astype(int)
 os.makedirs("figures_updated", exist_ok=True)
 
 # Graph 1: Motion detection by hour and room_type
-plt.figure(figsize=(14, 7))
-sns.lineplot(data=df_motion[df_motion["etat_bin"] == 1],
-             x="hour", hue="room_type", estimator='mean', ci=None, lw=2)
-plt.title("Motion Detection Patterns by Hour and Room Type")
-plt.xlabel("Hour of Day")
-plt.ylabel("Proportion of Motion Detections (ON)")
-plt.tight_layout()
-plt.savefig("figures_updated/motion_patterns_by_hour_room_type.png")
+#plt.figure(figsize=(14, 7))
+#sns.lineplot(data=df_motion[df_motion["etat_bin"] == 1],
+#             x="hour", y="etat_bin", hue="room_type", estimator='mean', errorbar=None, lw=2)
+#plt.title("Motion Detection Patterns by Hour and Room Type")
+#plt.xlabel("Hour of Day")
+#plt.ylabel("Proportion of Motion Detections (ON)")
+#plt.tight_layout()
+#plt.savefig("figures_updated/motion_patterns_by_hour_room_type.png")
 
 # Graph 2: Motion detection heatmap by hour and room_type
 motion_hour_room = df_motion[df_motion["etat_bin"] == 1].groupby(["room_type", "hour"]).size().unstack(fill_value=0)

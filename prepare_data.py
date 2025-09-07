@@ -67,7 +67,7 @@ def create_sequences(X, y, seq_len=20):
 X_seq, y_seq = create_sequences(X_combined, y)
 
 # Sauvegarde
-np.savez("data/prepared_from_txt.npz", X=X_seq, y=y_seq)
+np.savez("data/prepared_data.npz", X=X_seq, y=y_seq)
 joblib.dump(scaler, "model/scaler.save")
 
 with open("model/location_vocab.txt", "w") as f:
@@ -79,3 +79,4 @@ with open("model/room_type_vocab.txt", "w") as f:
         f.write(f"{rtype}\n")
 
 print(f"✅ Données préparées : {X_seq.shape[0]} séquences prêtes.")
+print("Données préparées et sauvegardé dans : data/prepared_data.npz")

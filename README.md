@@ -1,79 +1,110 @@
-# Ecolight-Movement-AI-Model
+# 🌱 Ecolight  
 
-## Lancer l'application
+Ecolight is a machine learning model that predicts people’s movement across different areas of a house based on the time of day.  
+It can be used to create optimized, waste-free lighting plans that reduce energy consumption.
 
-Pour exécuter l'application, vous devez lancer le fichier `app.py` :
+## ✨ Motivation  
+
+In regions where power outages are frequent, many households rely on solar energy as a backup. With limited resources, energy savings become crucial.  
+
+Ecolight was born from this challenge:  
+I wanted to help households understand and predict how they use their living spaces, so they can design smarter, cost-effective lighting strategies. By learning patterns of daily movement, Ecolight enables energy planning that is both efficient and sustainable.
+
+## 🚀 Quick Start  
+
+This project uses the [uv](https://docs.astral.sh/uv/) package and project manager.  
+
+### 1. Install dependencies  
+If you don’t already have **uv**, [install it](https://docs.astral.sh/uv/getting-started/installation/).  
+
+### 2. Clone and sync  
 
 ```bash
-python app.py
+git clone https://github.com/Onesimeav/Ecolight-Movement-AI-Model.git
+cd Ecolight-Movement-AI-Model
+uv sync
+````
+
+### 3. Activate the environment
+
+```bash
+source .venv/bin/activate
 ```
 
-Ce script lancera un serveur local accessible à l'adresse suivante :  
-**[http://127.0.0.1:5000/](http://127.0.0.1:5000/)**
+### 4. Run the app
 
-Une fois sur cette URL, vous pouvez utiliser l’interface web pour **générer des prédictions** via l’application.
+```bash
+uv run app.py
+```
+
+Visit `http://localhost:5000` to make predictions using the default dataset.
 
 ---
 
-## Évaluer le modèle
+## 📖 Usage
 
-Pour tester et évaluer le modèle existant, vous pouvez utiliser directement le script suivant :
+Besides the web interface, Ecolight provides scripts for training, evaluating, and analyzing models.
 
-```bash
-python model_evaluation.py
-```
+### Data Cleaning
 
-Ce script va effectuer une évaluation du modèle actuel.
-
----
-
-## Reprendre tout le processus depuis le début
-
-Si vous souhaitez tout reprendre depuis le début, suivez ces étapes :
-
-### 1. Nettoyage des données
-
-Rendez-vous dans le dossier `Data_Cleaning` et lancez le script `main.py` :
+Clean raw datasets before training.
+This project uses data from the [CASAS Datasets](https://casas.wsu.edu/datasets/).
 
 ```bash
-cd Data_Cleaning
-python main.py
+cd data_cleaning
+uv run main.py
 ```
 
-Par défaut, ce script utilise un fichier nommé `dirty_data.csv`.  
-Si vous le souhaitez, vous pouvez **remplacer ce fichier** par vos propres données en le téléchargeant depuis le site de **CASAS** :  
-➡️ [https://data.casas.wsu.edu/download/](https://data.casas.wsu.edu/download/)
+Output: `cleaned_casas_data.csv` inside `data_cleaning/data/`.
 
-Ce script va générer un nouveau fichier appelé :
+### Prepare Dataset
 
-```
-Cleaned_Casas_data.csv
-```
-
-### 2. Préparation des données
-
-Créez un dossier `Data` à la racine du projet et **déplacez** le fichier `Cleaned_Casas_data.csv` dedans.  
-Renommez ensuite ce fichier en :
-
-```
-Datasets.csv
-```
-
-Lancez maintenant le script `prepare_data_from_txt.py` :
+Place the cleaned file in a new `data/` folder as `dataset.csv`, then run:
 
 ```bash
-python prepare_data_from_txt.py
+uv run prepare_data.py
 ```
 
-Ce script va générer un fichier `.npz` à partir des données nettoyées.
+Outputs:
 
-### 3. Entraînement du modèle
+* `prepared_data.npz` (training-ready data)
+* `scaler.save` (used during training & prediction)
+* `location_vocab.txt`, `room_type_vocab.txt` (location & room mappings)
 
-Une fois les données prêtes, vous pouvez entraîner le modèle en lançant :
+### Train the Model
 
 ```bash
-python trainlstm.py
+uv run train_lstm.py
 ```
 
+### Evaluate the Model
 
+Download and clean a test dataset from CASAS. Save it as `test_dataset.csv` in `data/`, then run:
+
+```bash
+uv run model_evaluation.py
+```
+
+Outputs:
+
+* `classification_report.csv` (evaluation report)
+* `confusion_matrix.png` (visual confusion matrix)
+
+### Analyze Movement Patterns
+
+Generate graphs to visualize household movement patterns:
+
+```bash
+uv run analyze_patterns.py
+```
+
+Outputs graphs inside the `figure_updated/` folder.
+
+## 🤝 Contributing
+
+Contributions are welcome:
+
+1. Fork the repo
+2. Create a feature branch
+3. Submit a pull request
 
