@@ -28,4 +28,6 @@ def data_cleaning_process(file_path):
     # Sauvegarder en CSV
     filtered_df.to_csv(cleaned_output_path, index=False)
 
+    print(f"Data cleaned and saved to {cleaned_output_path}")
+
 data_cleaning_process("data/dirty_data.txt")

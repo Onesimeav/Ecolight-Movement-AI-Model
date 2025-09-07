@@ -25,7 +25,7 @@ def binary_focal_loss(gamma=2.0, alpha=0.25):
     return loss
 
 # Chargement des données
-data = np.load("data/prepared_from_txt.npz")
+data = np.load("data/prepared_data.npz")
 X = data["X"]
 y = data["y"]
 
@@ -97,4 +97,4 @@ plt.tight_layout()
 plt.savefig("model/confusion_matrix.png")
 plt.show()
 
-print("✅ Entraînement terminé sans la feature light_level.")
+print("✅ Entraînement terminé.")

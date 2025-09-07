@@ -107,6 +107,7 @@ def predict_plan():
     results = predict_sequence(room_type, start_time)
 
     # Générer un CSV temporaire
+    os.makedirs('static', exist_ok=True)
     csv_file = io.StringIO()
     writer = csv.DictWriter(csv_file, fieldnames=["time", "location", "predicted_on", "confidence"])
     writer.writeheader()
